@@ -1,5 +1,5 @@
-var file = 'my-line-delimited-file.json';
-var grammmmmmmm = 2;
+var file = 'test.json';
+var grammmmmmmm = 3;
 var drop_retweets = true;
 var drop_interactions_with_links = true;
 var drop_low_count = 5; // drop any values with a volume count lower than this
@@ -65,7 +65,7 @@ stream.on('data', function(line) {
 		results[each_string].count ++;
 		//results[each_string].sentiment = results[each_string].sentiment || data.salience.content.sentiment;
 		results[each_string].content = results[each_string].content || data.interaction.content;
-		results[each_string].followers_count = results[each_string].followers_count || data.twitter.user.followers_count
+		//results[each_string].followers_count = results[each_string].followers_count || data.twitter.user.followers_count
 		
 	}
 	
@@ -77,11 +77,10 @@ stream.on('data', function(line) {
 
 stream.on('end', function() {
 	// Build a csv - string, count, sentiment
-	var out = 'n-gram,volume,sentiment,followers_count,context' + "\n";
+	var out = 'n-gram,volume,context' + "\n";
 	for(var resind in results){
 		if(results[resind].count >= drop_low_count){
-			//out += '"' + resind + '",' + results[resind].count + ',' + results[resind].sentiment  + ',' + results[resind].followers_count + ',"' + results[resind].content + "\"\n";
-		}	out += '"' + resind + '",' + results[resind].count + ',' + results[resind].followers_count + ',"' + results[resind].content + "\"\n";
+		}	out += '"' + resind + '",' + results[resind].count + ',' + ',"' + results[resind].content + "\"\n";
 	}	
 	
 	// Save the file

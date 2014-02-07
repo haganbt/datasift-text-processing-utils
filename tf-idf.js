@@ -1,6 +1,6 @@
 /*
- Term Frequency–Inverse Document Frequency (tf-idf) is implemented to determine how important a word (or words)
- is to a document relative to a corpus.
+ Term Frequency–Inverse Document Frequency (tf-idf) is implemented to determine
+ how important a word (or words) is to a document relative to a corpus.
  */
 
 var file = 'test.json';
