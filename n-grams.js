@@ -80,7 +80,7 @@ stream.on('end', function() {
 	var out = 'n-gram,volume,context' + "\n";
 	for(var resind in results){
 		if(results[resind].count >= drop_low_count){
-		}	out += '"' + resind + '",' + results[resind].count + ',' + ',"' + results[resind].content + "\"\n";
+		}	out += '"' + resind + '",' + results[resind].count  + ',"' + results[resind].content + "\"\n";
 	}	
 	
 	// Save the file
