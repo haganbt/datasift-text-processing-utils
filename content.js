@@ -16,16 +16,11 @@ var fs = require('fs')
     ;
 
 
-var natural = require('natural'),
-    TfIdf = natural.TfIdf,
-    tfidf = new TfIdf();
-
-
 stream.on('data', function(line) {
 
     try{
         var data = JSON.parse(line);
-        //console.log(data.interaction.content);
+
 
         if(drop_retweets === true){
             if(data.twitter !== undefined && data.twitter.retweet !== undefined){
@@ -34,7 +29,7 @@ stream.on('data', function(line) {
         }
 
         if(data.interaction.content)
-            tfidf.addDocument(data.interaction.content);
+            console.log(data.interaction.content);
 
 
     } catch (e) {
@@ -48,9 +43,5 @@ stream.on('data', function(line) {
 
 stream.on('end', function() {
 
-    tfidf.listTerms(0 /*document index*/).forEach(function(item) {
-        console.log(item.term + ': ' + item.tfidf);
-    });
-    console.log("--------------------------");
-    //console.log(JSON.stringify(tfidf));
+
 });
