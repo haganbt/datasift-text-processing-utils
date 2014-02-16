@@ -42,6 +42,5 @@ stream.on('data', function(line) {
 
 
 stream.on('end', function() {
-
-
+    console.log("Done.");
 });
